@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2.75 5.5 5.5v5.1c0 4.16 2.73 8.02 6.5 9.65 3.77-1.63 6.5-5.49 6.5-9.65V5.5L12 2.75Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="m9.5 12.1 1.7 1.7 3.45-4.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            CryptoLab
+          </div>
+          <div class="brand-subtitle">Security Testing Toolkit</div>
+        </div>
+
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 2.5v2.2M12 19.3v2.2M4.8 4.8l1.6 1.6M17.6 17.6l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.8 19.2l1.6-1.6M17.6 6.4l1.6-1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 14.2A7.8 7.8 0 0 1 9.8 4a8.1 8.1 0 1 0 10.2 10.2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </header>
+
+      <nav class="tabs" aria-label="CryptoLab modules">
+        <button class="tab active" data-tab="hash-crack" type="button">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 16V8.5M12 16V5M17 16v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="3.5" y="18.5" width="17" height="2" rx="1" fill="currentColor"/></svg>
+          Hash Cracker
+        </button>
+        <button class="tab" data-tab="entropy" type="button">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 15.5A3.5 3.5 0 0 1 11.5 12H15.5a3.5 3.5 0 0 1 0 7H11.5A3.5 3.5 0 0 1 8 15.5Zm3.5-9A3.5 3.5 0 0 1 15 9.5V11h-3.5a3.5 3.5 0 0 0 0 7H15.5A3.5 3.5 0 0 0 19 14.5V9.5A3.5 3.5 0 0 0 15.5 6Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 15.5h2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          Password Entropy
+        </button>
+        <button class="tab" data-tab="avalanche" type="button">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.5 15.5 9 10l4 4 7.5-8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 5.5H20.5V8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Avalanche Effect
+        </button>
+        <button class="tab" data-tab="aes-mode" type="button">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 10V8a5 5 0 0 1 10 0v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M12 13.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          AES Modes
+        </button>
+      </nav>
+
+      <main class="panel-surface">
+        <section class="panel active" id="hash-crack-panel">
+          <div class="panel-form">
+            <h2>Hash Cracker</h2>
+            <form id="hash-crack-form">
+              <label for="hash-value">Hash value</label>
+              <input id="hash-value" name="hash_value" type="text" placeholder="e.g. 5f4dcc3b5aa765d61d8327deb882cf99" />
+              <div class="quick-actions">
+                <button type="button" class="quick-fill" data-fill="md5">MD5 example</button>
+                <button type="button" class="quick-fill" data-fill="sha1">SHA-1 example</button>
+              </div>
+              <button type="submit" class="primary-button">
+                <span class="button-text">Run analysis</span>
+              </button>
+            </form>
+          </div>
+          <div class="panel-result" id="hash-result">
+            <div class="result-placeholder">Awaiting hash analysis.</div>
+          </div>
+        </section>
+
+        <section class="panel" id="entropy-panel">
+          <div class="panel-form">
+            <h2>Password Entropy</h2>
+            <form id="entropy-form">
+              <label for="password">Password</label>
+              <input id="password" name="password" type="text" placeholder="Enter a candidate password" />
+              <button type="submit" class="primary-button">
+                <span class="button-text">Run analysis</span>
+              </button>
+            </form>
+          </div>
+          <div class="panel-result" id="entropy-result">
+            <div class="result-placeholder">Awaiting entropy analysis.</div>
+          </div>
+        </section>
+
+        <section class="panel" id="avalanche-panel">
+          <div class="panel-form">
+            <h2>Avalanche Effect</h2>
+            <form id="avalanche-form">
+              <label for="avalanche-text">Input text</label>
+              <input id="avalanche-text" name="text" type="text" placeholder="Type a sample string" />
+              <label for="avalanche-algorithm">Algorithm</label>
+              <select id="avalanche-algorithm" name="algorithm">
+                <option value="md5">MD5</option>
+                <option value="sha1">SHA-1</option>
+                <option value="sha256" selected>SHA-256</option>
+                <option value="sha512">SHA-512</option>
+              </select>
+              <button type="submit" class="primary-button">
+                <span class="button-text">Run analysis</span>
+              </button>
+            </form>
+          </div>
+          <div class="panel-result" id="avalanche-result">
+            <div class="result-placeholder">Awaiting avalanche analysis.</div>
+          </div>
+        </section>
+
+        <section class="panel" id="aes-mode-panel">
+          <div class="panel-form">
+            <h2>AES Modes</h2>
+            <form id="aes-mode-form">
+              <label for="plaintext">Plaintext</label>
+              <textarea id="plaintext" name="plaintext" rows="8" placeholder="Enter repeated plaintext to reveal ECB leakage"></textarea>
+              <div class="quick-actions">
+                <button type="button" class="quick-fill" data-fill="repeated">Use repeated-block example</button>
+              </div>
+              <button type="submit" class="primary-button">
+                <span class="button-text">Run analysis</span>
+              </button>
+            </form>
+          </div>
+          <div class="panel-result" id="aes-result">
+            <div class="result-placeholder">Awaiting AES mode analysis.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    </script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
